@@ -1,0 +1,14 @@
+project_id = "unievents-pk"
+
+# Gateways (JazzCash / Easypaisa) call these URLs from the customer's browser,
+# so they cannot carry a Supabase JWT. They are protected by the gateway hash
+# check inside the function instead.
+[functions.jazzcash-callback]
+verify_jwt = false
+
+[functions.easypaisa-callback]
+verify_jwt = false
+
+# create-payment validates the user's JWT itself (supabase.auth.getUser).
+[functions.create-payment]
+verify_jwt = false
